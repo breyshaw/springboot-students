@@ -10,30 +10,30 @@ public class Student {
   private String email;
   private LocalDate dob;
   private Integer age;
-  
-  public Student(){
-  
+
+  public Student() {
+
   }
-  
+
   public Student(String name, String email, LocalDate dob, Integer age) {
     this.name = name;
-    this .email = email;
+    this.email = email;
     this.dob = dob;
     this.age = age;
   }
-  
+
   public Student(Long id, String name, String email, LocalDate dob, Integer age) {
     this.id = id;
     this.name = name;
-    this .email = email;
+    this.email = email;
     this.dob = dob;
     this.age = age;
   }
-  
+
   public Long getId() {
     return this.id;
   }
-  
+
   public void setId(Long id) {
     this.id = id;
   }
@@ -73,15 +73,12 @@ public class Student {
   @Override
   public String toString() {
     return "Student{" +
-      " id='" + getId() + "'" +
-      ", name='" + getName() + "'" +
-      ", email='" + getEmail() + "'" +
-      ", dob='" + getDob() + "'" +
-      ", age='" + getAge() + "'" +
-      "}";
+        " id='" + getId() + "'" +
+        ", name='" + getName() + "'" +
+        ", email='" + getEmail() + "'" +
+        ", dob='" + getDob() + "'" +
+        ", age='" + getAge() + "'" +
+        "}";
   }
 
-
-  
 }
-

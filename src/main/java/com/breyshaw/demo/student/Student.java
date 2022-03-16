@@ -1,10 +1,28 @@
 package com.breyshaw.demo.student;
-
+import javax.persistence.Table;
 import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@Table
 
 //This is essentially the model
-
 public class Student {
+  @Id
+  @SequenceGenerator (
+    name = "student_sequence",
+    sequenceName = "student_sequence",
+    allocationSize = 1
+  )
+
+  @GeneratedValue (
+    strategy = GenerationType.SEQUENCE,
+    generator = "student_sequence"
+  )
   private Long id;
   private String name;
   private String email;

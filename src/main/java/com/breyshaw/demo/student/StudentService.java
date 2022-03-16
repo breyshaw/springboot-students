@@ -2,20 +2,25 @@ package com.breyshaw.demo.student;
 import java.util.List;
 import java.time.LocalDate;
 import java.time.Month;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 //Adding the "service layer" here. The service layer is mainly responsible for business logic. 
-@Service //This allows the studentservice to be instantiated on the StudentController. It shows the controller where to find the bean. Can also use @component here but @Service makes more sense. 
+
+@Service 
 public class StudentService {
 
-  public List<Student> getStudents() {
+  private final StudentRepository studentRepository;
 
-		return List.of(
-				new Student(
-						1L,
-						"Mariam",
-						"mariam.jamal@gmail.com",
-						LocalDate.of(2000, Month.JANUARY, 5),
-						21));
+  @Autowired
+  public StudentService(StudentRepository studentRepository) {
+    this.studentRepository = studentRepository;
+  }
+
+  @Autowired
+  
+  public List<Student> getStudents() {
+    return studentRepository.findAll(); //Look at all those methods!
 	}
 }

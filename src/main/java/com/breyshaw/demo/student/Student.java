@@ -7,16 +7,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-@Table
+@Entity //This annotation is for hibernate
+@Table //This is for the table in my database
 
-//This is essentially the model
 public class Student {
   @Id
   @SequenceGenerator (
     name = "student_sequence",
     sequenceName = "student_sequence",
-    allocationSize = 1
+    allocationSize = 1 //number of students in the Table increments by 1
   )
 
   @GeneratedValue (

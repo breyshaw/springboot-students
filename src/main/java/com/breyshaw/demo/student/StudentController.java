@@ -2,6 +2,7 @@ package com.breyshaw.demo.student;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
@@ -12,7 +13,10 @@ public class StudentController {
 
   //refernce to student service
   private final StudentService studentService;
+
   //passing StudentService inside the controller
+  //Autowired allows StudentService to be instantiated. In order for it to be instantiated though, it will need to be a bean
+  @Autowired
   public StudentController(StudentService studentService) {
     this.studentService = studentService;
   }

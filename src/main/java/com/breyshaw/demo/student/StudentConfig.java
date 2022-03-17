@@ -12,10 +12,10 @@ public class StudentConfig {
   CommandLineRunner commandLineRunner(StudentRepository repository) {
     return args -> {
       Student mariam = new Student(
-        1L,"Mariam","mariam.jamal@gmail.com", LocalDate.of(2000, Month.JANUARY, 5),21
+        1L,"Mariam","mariam.jamal@gmail.com", LocalDate.of(2000, Month.JANUARY, 5)
       );
       Student alex = new Student(
-        "Alex","alex@gmail.com", LocalDate.of(2004, Month.JANUARY, 5),21
+        "Alex","alex@gmail.com", LocalDate.of(2004, Month.JANUARY, 5)
       );
 //This is how we save to the database, invoke the repository, use the saveAll method and that takes a list(passing the students)
       repository.saveAll(

@@ -1,6 +1,9 @@
 package com.breyshaw.demo.student;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+//Best practice is to make sure to use javax.persistence, that way if we change from hibernate to another provider, things will still work
 import java.time.LocalDate;
+import java.time.Period;
 import javax.persistence.Entity;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.GeneratedValue;
@@ -26,25 +29,24 @@ public class Student {
   private String name;
   private String email;
   private LocalDate dob;
+@Transient //This annotation lets the machine know that this Integer does not have to be in a column, allowing us to remove it from the constructor because I am going to use DOB to caluclate age
   private Integer age;
 
   public Student() {
 
   }
 
-  public Student(String name, String email, LocalDate dob, Integer age) {
+  public Student(String name, String email, LocalDate dob) {
     this.name = name;
     this.email = email;
     this.dob = dob;
-    this.age = age;
   }
 
-  public Student(Long id, String name, String email, LocalDate dob, Integer age) {
+  public Student(Long id, String name, String email, LocalDate dob) {
     this.id = id;
     this.name = name;
     this.email = email;
     this.dob = dob;
-    this.age = age;
   }
 
   public Long getId() {
@@ -80,7 +82,8 @@ public class Student {
   }
 
   public Integer getAge() {
-    return this.age;
+    //This function caluclates the number of years between the users dob to the current date and returns that as an Integer
+    return Period.between(dob, LocalDate.now()).getYears();
   }
 
   public void setAge(Integer age) {

@@ -16,10 +16,11 @@ public class StudentService {
     this.studentRepository = studentRepository;
   }
 
-  @Autowired
-  
   public List<Student> getStudents() {
     return studentRepository.findAll(); //Look at all those methods!
     //Currently brings back an empty array because there are no students
+}
+  public void addNewStudent(Student student) {
+      System.out.println(student);
 	}
 }

@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 //The following creates the url path. When the endpoint is accessed, the Student Controller is executed
@@ -26,4 +28,11 @@ public class StudentController {
 public List<Student> getStudents() {
   return studentService.getStudents();
 	}
+  
+  //Here we will impement the API that will take a payload and store it in our system
+  @PostMapping //POST - taking the request body and mapping it to a student
+  public void registerNewStudent(@RequestBody Student student) { 
+    studentService.addNewStudent(student);
+  }
+
 }
